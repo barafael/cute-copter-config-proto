@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Copy, Clone, Debug, PartialEq, Serialize, Deserialize)]
-pub enum Write {
+pub enum ConfigurationCommand {
     YawProportional(f32),
     YawIntegral(f32),
     YawDerivative(f32),
@@ -17,16 +17,16 @@ pub enum Write {
 
 #[cfg(test)]
 mod test {
-    use crate::parameter::Write;
+    use crate::parameter::ConfigurationCommand;
     use core::ops::Deref;
     use heapless::Vec;
     use postcard::{from_bytes, to_vec};
 
     #[test]
     fn frame() {
-        let frame = Write::RollDerivative(2.0);
+        let frame = ConfigurationCommand::RollDerivative(2.0);
         let output: Vec<u8, 5> = to_vec(&frame).unwrap();
-        let back: Write = from_bytes(output.deref()).unwrap();
-        assert!(matches!(back, Write::RollDerivative(x) if x == 2.0));
+        let back: ConfigurationCommand = from_bytes(output.deref()).unwrap();
+        assert!(matches!(back, ConfigurationCommand::RollDerivative(x) if x == 2.0));
     }
 }
