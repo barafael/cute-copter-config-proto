@@ -1,8 +1,14 @@
-use crate::parameter;
+use crate::{command, configuration};
 use serde::{Deserialize, Serialize};
 
 #[derive(Copy, Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub enum Message {
-    Parameter(parameter::ConfigurationCommand),
+    Configuration(command::SetParameter),
+    Interactive(command::Interactive),
     RequestParams,
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub enum Response {
+    Params(configuration::Configuration),
 }
