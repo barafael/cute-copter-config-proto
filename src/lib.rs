@@ -2,4 +2,5 @@
 
 pub mod command;
 pub mod configuration;
+pub mod error;
 pub mod message;
