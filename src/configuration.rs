@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Copy, Clone, Debug, Default, PartialEq, Deserialize, Serialize)]
+#[derive(Copy, Clone, Debug, Default, PartialEq, Deserialize, Serialize, defmt::Format)]
 #[repr(C)]
 pub struct Configuration {
     yaw_p: f32,

@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Copy, Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Copy, Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize, defmt::Format)]
 pub struct Interactive {
     pub throttle: u16,
     pub roll: u16,

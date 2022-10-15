@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Copy, Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Copy, Clone, Debug, PartialEq, Serialize, Deserialize, defmt::Format)]
 pub enum SetParameter {
     YawProportional(f32),
     YawIntegral(f32),
